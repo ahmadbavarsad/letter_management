@@ -1,0 +1,28 @@
+{% extends "admin/change_form.html" %}
+
+{% block content %}
+<div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">Home</a>
+    &rsaquo; <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural }}</a>
+    &rsaquo; {{ original }}
+</div>
+
+<h1>{{ original }} (Change)</h1>
+
+<form enctype="multipart/form-data" action="" method="post" id="{{ opts.model_name }}_form" novalidate>{% csrf_token %}
+    {{ form.media }}
+    <fieldset class="module aligned">
+        <div class="form-row field-sent_date">
+            <div>
+                <label for="{{ form.sent_date.id_for_label }}" class="vDateField">
+                    Sent Date (Jalali):
+                    <span>{{ original.sent_date_jalali }}</span> <!-- Display Jalali date -->
+                </label>
+                {{ form.sent_date }}
+            </div>
+        </div>
+        <!-- Add other fields as needed -->
+    </fieldset>
+    <!-- Add other fieldsets and fields as needed -->
+</form>
+{% endblock %}
