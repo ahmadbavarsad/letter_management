@@ -18,7 +18,8 @@
                     <th>ردیف</th>
                     <th>عنوان نامه</th>
                     <th>تاریخ</th>
-                    <th>فایل نامه</th>
+                    <th>فایل ورد نامه</th>
+                    <th>تصویر نامه</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +27,7 @@
                 <tr>
                     <td>{{ forloop.counter }}</td>
                     <td>{{ letter.subject }}</td>
+                    <td>{{ letter.OutgoingDraft }}</td>
                     <td>{{ letter.received_date }}</td>
                     <td> 
                         <button class="btn btn-success btn-sm download-btn" data-letter-id="{{ letter.pk }}">دریافت فایل</button>
