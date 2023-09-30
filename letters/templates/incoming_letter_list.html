@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Incoming Letters</title>
-    <!-- Include Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+{% extends 'base.html' %} {% block content %} {% load static %}
     <div class="container mt-4">
         <h2>Incoming Letters</h2>
         <a class="btn btn-primary mb-2" href="{% url 'incoming_letter_create' %}">Add Incoming Letter</a>
@@ -17,7 +8,8 @@
                 <tr>
                     <th>ردیف</th>
                     <th>عنوان نامه</th>
-                    <th>تاریخ</th>
+                    <th>صاحبان نامه</th>
+                    <th>تاریخ نامه وارده</th>
                     <th>فایل ورد نامه</th>
                     <th>تصویر نامه</th>
                 </tr>
@@ -27,9 +19,13 @@
                 <tr>
                     <td>{{ forloop.counter }}</td>
                     <td>{{ letter.subject }}</td>
-                    <td>{{ letter.OutgoingDraft }}</td>
-                    <td>{{ letter.received_date }}</td>
+                    <td>{{ letter.category }}</td>
+                    <td>{{ OutgoingLetter.received_date }}</td>
+                    <td>{{ letter. }}</td>
                     <td> 
+                        <button class="btn btn-success btn-sm download-btn" data-letter-id="{{ letter.pk }}">دریافت فایل pdf</button>
+                    </td>
+                    <td>
                         <button class="btn btn-success btn-sm download-btn" data-letter-id="{{ letter.pk }}">دریافت فایل</button>
                     </td>
                 </tr>
@@ -41,21 +37,4 @@
             </tbody>
         </table>
     </div>
-
-    <!-- Include Bootstrap JavaScript (optional) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- Include jQuery for download button functionality -->
-    <script>
-        $(document).ready(function () {
-            $(".download-btn").click(function () {
-                var letterId = $(this).data("letter-id");
-                // Redirect to the download view with the letter ID
-                window.location.href = "{% url 'incoming_letter_download' 0 %}".replace("0", letterId);
-            });
-        });
-    </script>
-</body>
-</html>
+{% endblock %}

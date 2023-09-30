@@ -28,7 +28,7 @@ class OutgoingLetterAdminForm(forms.ModelForm):
     received_date = forms.DateField(
         widget=AdminJalaliDateWidget(),
         label="تاریخ نامه صادره",
-        required=False  # Set to True if it's a required field
+        required=True  # Set to True if it's a required field
     )
 
     class Meta:

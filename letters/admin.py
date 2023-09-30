@@ -1,7 +1,7 @@
 from django.contrib import admin
 from jalali_date import date2jalali, datetime2jalali
 from jalali_date.widgets import AdminJalaliDateWidget, AdminSplitJalaliDateTime
-from .models import IncomingLetter, OutgoingLetter
+from .models import *
 from .forms import IncomingLetterAdminForm, OutgoingLetterAdminForm
 
 
@@ -13,3 +13,7 @@ class IncomingLetterAdmin(admin.ModelAdmin):
 class OutgoingLetterAdmin(admin.ModelAdmin):
     form = OutgoingLetterAdminForm
 
+
+
+admin.site.register(IncomingCategoryLetter)
+admin.site.register(OutgoingCategoryLetter)
