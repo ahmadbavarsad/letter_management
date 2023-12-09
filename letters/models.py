@@ -4,34 +4,8 @@ from jalali_date.fields import JalaliDateField
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import FileExtensionValidator
 from django.utils.text import slugify
-
-
-OPTIONS = (
-    ('COOL', 'COOL'),
-    ('WARM', 'WARM'),
-)
-class WriterName(models.Model):
-     options = models.CharField(max_length=20, choices=OPTIONS, default=None,blank=True, null=True)
-
-class Article(models.Model):
-    STATUS = Choices('draft', 'published')
-    status = models.CharField(choices=STATUS, default=STATUS.draft, max_length=20)
-
-
-class Book(models.Model):
-    title = models.CharField(db_column='title', max_length=100, blank=False)
-    writer_name = models.Choices(WriterName,)
-    description = models.TextField(db_column='description', max_length=1000, blank=False)
-    slug = models.SlugField(db_column='slug', blank=False, unique=True, allow_unicode=True,verbose_name='نام دلخواه')
-
-    class Meta:
-        db_table = 'book'
-        verbose_name = 'Book'
-        verbose_name_plural = 'Books'
-    def __unicode__(self):
-        return self.title
-    def __str__(self):
-        return self.title
+from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class IncomingCategoryLetter(models.Model):
@@ -45,7 +19,7 @@ class IncomingCategoryLetter(models.Model):
         return self.SahebanName
     def __str__(self):
         return self.SahebanName
-    
+
 #نامه وارده
 class IncomingLetter(models.Model):
     category = models.ManyToManyField(IncomingCategoryLetter, verbose_name='صاحبان نامه ها')

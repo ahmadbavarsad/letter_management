@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'letters',
     'django_jalali',
     'jalali_date',
+    'book',
 ]
 
 MIDDLEWARE = [
@@ -113,7 +114,7 @@ TIME_ZONE = 'Asia/Tehran'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -121,11 +122,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, images)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_DIRS = [ BASE_DIR / "statics" ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

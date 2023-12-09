@@ -17,11 +17,14 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.urls import path,include
 from django.conf import settings
+from book.urls import *
+from letters.urls import *
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include ('letters.urls'))
+    path('letters', include ('letters.urls')),
+    path('', include ('book.urls')),
 ]
 
 

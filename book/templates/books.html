@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %} {% load static %}
+    <div class="container mt-4">
+        <h2>Incoming books</h2>
+        <a class="btn btn-primary mb-2" href="#">Add Incoming Letter</a>
+
+        <table id="incoming-letters" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ردیف</th>
+                    <th>عنوان کتاب</th>
+                    <th>صاحبان کتاب</th>
+                    <th>تاریخ کتاب وارده</th>
+                    <th>فایل ورد کتاب</th>
+                    <th>تصویر کتاب</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ book.subject }}</td>
+                    <td>{{ book.category }}</td>
+                    <td>{{ OutgoingLetter.received_date }}</td>
+                    <td>{{ book.books }}</td>
+                    <td> 
+                        <button class="btn btn-success btn-sm download-btn" data-letter-id="{{ book.pk }}">دریافت فایل pdf</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success btn-sm download-btn" data-letter-id="{{ book.pk }}">دریافت فایل</button>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No incoming letters available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

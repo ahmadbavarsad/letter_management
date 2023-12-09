@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incoming Letters</title>
+    <!-- Include your CSS stylesheets here -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+
+<body>
+
+
+    {% block content %}
+    
+    {
+            
+    
+    }
+    
+    {% endblock %}
+
+
+
+        <!-- Include your custom JavaScript/jQuery script here -->
+        <script>
+            // jQuery script for handling the download button click event
+            $(document).ready(function () {
+                $(".download-btn").click(function () {
+                    var letterId = $(this).data("letter-id");
+                    // Redirect to the download view with the letter ID
+                    window.location.href = "{% url 'incoming_letter_download' 0 %}".replace("0", letterId);
+                });
+            });
+        </script>
+    </body>
+    </html>
